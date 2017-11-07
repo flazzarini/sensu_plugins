@@ -1,1 +1,4 @@
-# sensu_plugins
+Sensu Plugins
+=============
+
+My Collection of Sensu Plugins.
