@@ -22,7 +22,9 @@ setup(
         "pyspeedtest",
     ],
     entry_points={
-        'console_scripts': []
+        'console_scripts': [
+            "check_speedtestping=sensu_plugins.check_speedtestping:main"
+        ]
     },
     dependency_links=[],
     packages=find_packages(exclude=["tests.*", "tests"]),
