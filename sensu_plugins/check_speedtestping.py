@@ -18,9 +18,13 @@ class SpeedTestPingCheck(SensuPluginCheck):
         return speedtest.ping()
 
     def run(self):
-        result = self._do_ping()
-        msg = "Ping to speedtest.net took `%s ms`" % result
+        try:
+            result = self._do_ping()
+        except Exception as exc:
+            msg = "Ping to speedtest.net failed - %s" % exc
+            self.critical(msg)
 
+        msg = "Ping to speedtest.net took `%s ms`" % result
         if result > self.options.critical:
             self.critical(msg)
         elif result > self.options.warning:
